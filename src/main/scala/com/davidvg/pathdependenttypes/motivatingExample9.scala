@@ -26,5 +26,5 @@ trait CredentialController {
   private def extractApiKey(
       request: HttpRequest,
       repository: ApiKeyRepository
-    ): repository.username.ApiKey = ???
+    ): repository.Credential = ???
 }
