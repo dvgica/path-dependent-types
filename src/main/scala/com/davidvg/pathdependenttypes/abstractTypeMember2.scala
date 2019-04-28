@@ -14,5 +14,5 @@ class ApiKeyAuthenticator extends Authenticator {
 class PinAuthenticator extends Authenticator {
   type Credential = Pin
 
-  override def authenticate(pin: Pin): Boolean = ???
+  override def authenticate(pin: Credential): Boolean = ???
 }

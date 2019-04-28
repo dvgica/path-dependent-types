@@ -7,13 +7,13 @@ object App {
   val pinAuthenticator = new PinAuthenticator
 
   val apiKey: apiKeyAuthenticator.Credential = ApiKey("SUCH-SECRET")
-  val accessCode: pinAuthenticator.Credential = Pin("1234")
+  val pin: pinAuthenticator.Credential = Pin("1234")
 
   apiKeyAuthenticator.authenticate(apiKey)
-  pinAuthenticator.authenticate(accessCode)
+  pinAuthenticator.authenticate(pin)
 
-//  apiKeyAuthConfig.authenticate(accessCode)
+  // apiKeyAuthenticator.authenticate(pin)
   // type mismatch:
-  //   found: AccessCode
+  //   found: Pin
   //   required: ApiKey
 }

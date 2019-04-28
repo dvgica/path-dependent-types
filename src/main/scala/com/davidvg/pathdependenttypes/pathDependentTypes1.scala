@@ -1,6 +1,6 @@
 package com.davidvg.pathdependenttypes.pathDependentTypes1
 
-class Authentication(requiredKeyLength: Int) {
+class Authenticator(requiredKeyLength: Int) {
   case class ApiKey(key: String) {
     require(key.length >= requiredKeyLength)
   }

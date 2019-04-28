@@ -10,9 +10,11 @@ case class Username(name: String) {
 trait CredentialRepository {
   type Credential
 
-  private val credentialStore = scala.collection.mutable.Set[Credential]()
+  private val credentialStore =
+    scala.collection.mutable.Set[Credential]()
 
-  def authenticate(credential: Credential): Boolean = credentialStore.contains(credential)
+  def authenticate(credential: Credential): Boolean =
+    credentialStore.contains(credential)
 
   def generateAndStore: Credential = {
     val credential = generate
@@ -23,7 +25,8 @@ trait CredentialRepository {
   def generate: Credential
 }
 
-class PinRepository(val username: Username) extends CredentialRepository {
+class PinRepository(val username: Username)
+    extends CredentialRepository {
   type Credential = username.Pin
 
   override def generate: username.Pin = {
@@ -31,7 +34,8 @@ class PinRepository(val username: Username) extends CredentialRepository {
   }
 }
 
-class ApiKeyRepository(val username: Username) extends CredentialRepository {
+class ApiKeyRepository(val username: Username)
+    extends CredentialRepository {
   type Credential = username.ApiKey
 
   override def generate: username.ApiKey = {

@@ -3,17 +3,17 @@ package com.davidvg.pathdependenttypes.pathDependentTypes2
 import com.davidvg.pathdependenttypes.pathDependentTypes1._
 
 object App {
-  val weakAuthentication = new Authentication(4)
-  val strongAuthentication = new Authentication(16)
+  val weakAuthenticator = new Authenticator(4)
+  val strongAuthenticator = new Authenticator(16)
 
-  val weakApiKey = weakAuthentication.ApiKey("abcd")
-  val strongApiKey = strongAuthentication.ApiKey("abcdefghijklmnop")
+  val weakApiKey = weakAuthenticator.ApiKey("abcd")
+  val strongApiKey = strongAuthenticator.ApiKey("abcdefghijklmnop")
 
-  weakAuthentication.knownKeys += weakApiKey
-  strongAuthentication.knownKeys += strongApiKey
+  weakAuthenticator.knownKeys += weakApiKey
+  strongAuthenticator.knownKeys += strongApiKey
 
-  // strongAuthConfig.knownKeys += weakApiKey
+  // strongAuthenticator.knownKeys += weakApiKey
   // type mismatch:
-  //   found: weakAuthConfig.ApiKey
-  //   required: strongAuthConfig.ApiKey
+  //   found: weakAuthenticator.ApiKey
+  //   required: strongAuthenticator.ApiKey
 }

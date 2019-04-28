@@ -17,12 +17,12 @@ case class ApiKey[U <: Username](key: String)
 class ApiKeyRepository[U <: Username] {
   private val keyStore = scala.collection.mutable.Set[ApiKey[U]]()
 
-  def authenticateKey(apiKey: ApiKey[U]): Boolean = keyStore.contains(apiKey)
+  def authenticateKey(apiKey: ApiKey[U]): Boolean =
+    keyStore.contains(apiKey)
 
-  def generateKey: ApiKey[U] = {
+  def generateKey(): ApiKey[U] = {
     val key = ApiKey[U](Random.nextString(32))
     keyStore.add(key)
     key
   }
-
 }
