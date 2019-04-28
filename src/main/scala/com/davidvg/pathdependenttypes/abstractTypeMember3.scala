@@ -1,19 +1,18 @@
 package com.davidvg.pathdependenttypes.abstracttypemember3
 
-import com.davidvg.pathdependenttypes.abstracttypemember2._
+import com.davidvg.pathdependenttypes.abstracttypemember1._
 
-object App {
-  val apiKeyAuthenticator = new ApiKeyAuthenticator
-  val pinAuthenticator = new PinAuthenticator
+case class Password(password: String)
 
-  val apiKey: apiKeyAuthenticator.Credential = ApiKey("SUCH-SECRET")
-  val pin: pinAuthenticator.Credential = Pin("1234")
+class PasswordAuthenticator extends Authenticator {
+  type Credential = Password
+  // class PasswordAuthenticator needs to be abstract,
+  // since method authenticate in trait Authenticator of type
+  // (credential: PasswordAuthenticator.this.Credential)Boolean
+  // is not defined
 
-  apiKeyAuthenticator.authenticate(apiKey)
-  pinAuthenticator.authenticate(pin)
+  // (Note that Authenticator.this.Credential does not match
+  // com.davidvg.pathdependenttypes.abstracttypemember3.Password)
 
-  // apiKeyAuthenticator.authenticate(pin)
-  // type mismatch:
-  //   found: Pin
-  //   required: ApiKey
+  override def authenticate(password: Password): Boolean = ???
 }
