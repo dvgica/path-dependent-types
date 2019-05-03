@@ -1,5 +1,6 @@
 package com.davidvg.pathdependenttypes.abstracttypemember4
 
+import com.davidvg.pathdependenttypes.abstracttypemember1._
 import com.davidvg.pathdependenttypes.abstracttypemember2._
 
 object App {
@@ -16,5 +17,4 @@ object App {
   // type mismatch:
   //   found: Pin
   //   required: ApiKey
-
 }

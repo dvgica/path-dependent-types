@@ -10,9 +10,9 @@ trait Credential {
 trait Authenticator {
   type C <: Credential
 
-  def authenticate(credential: Credential): Boolean
+  def authenticate(credential: C): Boolean
 
-  def expired(credential: Credential): Boolean = {
+  def expired(credential: C): Boolean = {
     Duration.between(credential.createdOn, Instant.now).toDays < 90
   }
 }
